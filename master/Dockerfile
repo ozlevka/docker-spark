@@ -1,6 +1,6 @@
-FROM bde2020/spark-base:2.4.5-hadoop2.7
+FROM ozlevka/spark-base-debian:1
 
-LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
+LABEL maintainer="ozlevka <ozlevka@gmail.com>"
 
 COPY master.sh /
 
