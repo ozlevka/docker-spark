@@ -28,3 +28,13 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "SPARK_WORKER_WEBUI_PORT=8082"
+  
+  development:
+    image: ozlevka/spark-dev-debian:2.2.0
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    user: vscode
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+    volumes:
+      - "./:/home/vscode/dev"
+    
