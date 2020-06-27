@@ -1,4 +1,4 @@
-FROM ozlevka/spark-base-debian:1
+FROM ozlevka/spark-base:2.4.5-debian
 
 LABEL maintainer="ozlevka <ozlevka@gmail.com>"
 

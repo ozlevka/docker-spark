@@ -1,7 +1,7 @@
 version: '3'
 services:
   spark-master:
-    image: ozlevka/spark-master-debian:1
+    image: ozlevka/spark-master:2.4.5-debian
     container_name: spark-master
     ports:
       - "8080:8080"
@@ -9,7 +9,7 @@ services:
     environment:
       - INIT_DAEMON_STEP=setup_spark
   spark-worker-1:
-    image: ozlevka/spark-worker-debian:1
+    image: ozlevka/spark-worker:2.4.5-debian
     container_name: spark-worker-1
     depends_on:
       - spark-master
@@ -19,7 +19,7 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "SPARK_WORKER_WEBUI_PORT=8081"
   spark-worker-2:
-    image: ozlevka/spark-worker-debian:1
+    image: ozlevka/spark-worker:2.4.5-debian
     container_name: spark-worker-2
     depends_on:
       - spark-master
@@ -28,3 +28,16 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
       - "SPARK_WORKER_WEBUI_PORT=8082"
+  
+  development:
+    image: ozlevka/spark-dev:2.4.5-debian
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    user: vscode
+    ports: 
+      - 7777:7777
+      - 7776:7776
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+    volumes:
+      - "./:/home/vscode/dev"
+    
