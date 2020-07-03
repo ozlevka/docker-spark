@@ -31,6 +31,7 @@ services:
   
   development:
     image: ozlevka/spark-dev:2.4.5-debian
+    #command: /bin/bash -c "PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=0.0.0.0 --port=7777" /spark/bin/pyspark --master spark://spark-master:7077"
     command: /bin/sh -c "while sleep 1000; do :; done"
     user: vscode
     ports: 
