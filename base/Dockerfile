@@ -2,6 +2,8 @@ FROM ozlevka/java-8-jdk-python-3-7:1
 
 LABEL maintainer="ozlevka <ozlevka@gmail.com>"
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 ENV ENABLE_INIT_DAEMON true
 ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
 ENV INIT_DAEMON_STEP spark_master_init
@@ -17,6 +19,7 @@ ENV HADOOP_VERSION=3.2
 
 RUN apt-get update \
     && apt-get -y install --no-install-recommends curl wget \
+    && pip --disable-pip-version-check --no-cache-dir install pylint numpy scipy pandas nose feedparser \
       #&& ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2 \
       #&& chmod +x *.sh \
       && wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
@@ -33,3 +36,4 @@ RUN apt-get update \
 # Fix the value of PYTHONHASHSEED
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED 1
+ENV DEBIAN_FRONTEND=
