@@ -1,4 +1,4 @@
-FROM ozlevka/java-8-jdk-python-3-7:1
+FROM ozlevka/java-8-jdk-python-3-6:1
 
 LABEL maintainer="ozlevka <ozlevka@gmail.com>"
 
