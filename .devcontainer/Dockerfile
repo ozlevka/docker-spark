@@ -29,3 +29,6 @@ RUN apt-get update \
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND= 
+ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython
+ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=0.0.0.0 --port=7777"
+EXPOSE 7777
