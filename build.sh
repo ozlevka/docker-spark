@@ -14,6 +14,7 @@ build() {
     cd $([ -z "$2" ] && echo "./$DIR" || echo "$2")
     echo '--------------------------' building $IMAGE in $(pwd)
     docker build -t $IMAGE .
+    docker push $IMAGE
     cd -
 }
 
@@ -21,6 +22,7 @@ build base
 build master
 build worker
 build dev
+build history
 # build submit
 # build java-template template/java
 # build scala-template template/scala
