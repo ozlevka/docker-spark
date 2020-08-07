@@ -13,8 +13,16 @@ RUN apt-get update \
     # Verify git, process tools, lsb-release (common in install instructions for CLIs) installed
     && apt-get -y install git procps lsb-release \
     #
-    # Install pylint
-    && pip --disable-pip-version-check --no-cache-dir install "jupyter[all]" \
+   # Install pylint
+    && pip --disable-pip-version-check --no-cache-dir install pylint \
+    && pip --disable-pip-version-check --no-cache-dir install elasticsearch pandas  \
+       googlefinance  \
+       yfinance \
+       pandas-datareader \
+       bokeh \
+       matplotlib \
+       PyArrow \
+       "jupyter" \
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
@@ -27,6 +35,6 @@ RUN apt-get update \
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND= 
 ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython
-ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=0.0.0.0 --port=7777"
+ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --NotebookApp.token='66ba44b834ce4e801c8be3f73c07bd9389a72bf48ba7e1d6' --ip=0.0.0.0 --port=7777"
 EXPOSE 7777
 EXPOSE 7776

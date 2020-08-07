@@ -6,12 +6,13 @@
 
     // Comment out the next line to run as root instead. Linux users, update
     // Dockerfile with your user's UID/GID if not 1000.
-    "runArgs": [ "-u", "vscode" ],
+    "runArgs": [ "-u", "vscode"],
 
     // Use 'settings' to set *default* container specific settings.json values on container create. 
     // You can edit these settings after create using File > Preferences > Settings > Remote.
     "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "python.dataScience.jupyterServerURI": "http://127.0.0.1:7777/?token=66ba44b834ce4e801c8be3f73c07bd9389a72bf48ba7e1d6"
     },
 
     // Specifies a command that should be run after the container has been created.
