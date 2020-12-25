@@ -1,4 +1,4 @@
-FROM ozlevka/spark-base:3.0-debian
+FROM ghcr.io/ozlevka/spark-base:2.4.7-debian
 
 LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
 
