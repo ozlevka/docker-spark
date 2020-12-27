@@ -1,4 +1,4 @@
-FROM ozlevka/spark-base:3.0-debian
+FROM ghcr.io/ozlevka/spark-base:2.4.7-debian
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -14,7 +14,7 @@ RUN apt-get update \
     && apt-get -y install git procps lsb-release \
     #
     # Install pylint
-    && pip --disable-pip-version-check --no-cache-dir install "jupyter[all]" \
+    # && pip --disable-pip-version-check --no-cache-dir install "jupyter[all]" \
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
@@ -26,7 +26,7 @@ RUN apt-get update \
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND= 
-ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython
-ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=0.0.0.0 --port=7777"
+#ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/ipython
+#ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --ip=0.0.0.0 --port=7777"
 EXPOSE 7777
 EXPOSE 7776
